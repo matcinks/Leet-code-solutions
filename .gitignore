@@ -1,0 +1,40 @@
+# IntelliJ IDEA
+.idea/
+
+# Gradle
+.gradle/
+build/
+
+# Gradle wrapper
+gradlew
+gradlew.bat
+
+# Gradle wrapper files
+gradle/wrapper/gradle-wrapper.jar
+gradle/wrapper/gradle-wrapper.properties
+
+# Gradle user-specific files
+gradle.properties
+
+# Eclipse
+.classpath
+.project
+.settings/
+
+# macOS
+.DS_Store
+
+# Log files
+*.log
+
+# Temporary files
+*.tmp
+*.swp
+
+# User-specific files
+.gradle
+*.iml
+
+# Output directories
+out/
+
