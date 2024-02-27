@@ -32,11 +32,11 @@ public class ContainsDuplicate extends LeetCodeTask {
 
     boolean containsDuplicate(int[] nums) {
         Set<Integer> someSet = new HashSet<>();
-        for (int i = 0; i < nums.length; i++) {
-            if (someSet.contains(nums[i])) {
+        for (int num : nums) {
+            if (someSet.contains(num)) {
                 return true;
             }
-            someSet.add(nums[i]);
+            someSet.add(num);
         }
         return false;
     }
