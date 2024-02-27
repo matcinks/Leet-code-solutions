@@ -1,7 +1,8 @@
 package javasolutions.arraysandhashing;
 
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
+
+import java.util.Arrays;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -14,12 +15,13 @@ class TwoSumTest {
         int target = 9;
         TwoSum twoSum = new TwoSum();
         // when
-        int[] result = twoSum.twoSum(nums, target);
+        int[] firstResult = twoSum.twoSumBruteForce(nums, target);
+        int[] secondResult = twoSum.twoSumHashMap(nums, target);
         // then
-        assertEquals(result, new int[] {0, 1});
+        assertTrue(Arrays.equals(firstResult, new int[]{0, 1}) || Arrays.equals(firstResult, new int[] {1, 0}));
+        assertTrue(Arrays.equals(secondResult, new int[]{0, 1}) || Arrays.equals(secondResult, new int[] {1, 0}));
     }
 
-    @Disabled
     @Test
     void should_return_second_and_third_indices_from_provided_array() {
         // given
@@ -27,12 +29,13 @@ class TwoSumTest {
         int target = 6;
         TwoSum twoSum = new TwoSum();
         // when
-        int[] result = twoSum.twoSum(nums, target);
+        int[] firstResult = twoSum.twoSumBruteForce(nums, target);
+        int[] secondResult = twoSum.twoSumHashMap(nums, target);
         // then
-        assertEquals(result, new int[] {1, 2});
+        assertTrue(Arrays.equals(firstResult, new int[]{1, 2}) || Arrays.equals(firstResult, new int[] {2, 1}));
+        assertTrue(Arrays.equals(secondResult, new int[]{1, 2}) || Arrays.equals(secondResult, new int[] {2, 1}));
     }
 
-    @Disabled
     @Test
     void should_return_first_and_second_indices_from_provided_two_elements_array() {
         // given
@@ -40,8 +43,10 @@ class TwoSumTest {
         int target = 6;
         TwoSum twoSum = new TwoSum();
         // when
-        int[] result = twoSum.twoSum(nums, target);
+        int[] firstResult = twoSum.twoSumBruteForce(nums, target);
+        int[] secondResult = twoSum.twoSumHashMap(nums, target);
         // then
-        assertEquals(result, new int[] {0, 1});
+        assertTrue(Arrays.equals(firstResult, new int[]{0, 1}) || Arrays.equals(firstResult, new int[] {1, 0}));
+        assertTrue(Arrays.equals(secondResult, new int[]{0, 1}) || Arrays.equals(secondResult, new int[] {1, 0}));
     }
 }

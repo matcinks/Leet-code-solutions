@@ -1,8 +1,6 @@
 package kotlinsolutions.arraysandhashing
 
 import org.junit.jupiter.api.Assertions
-import org.junit.jupiter.api.Assertions.*
-import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.Test
 
 class TwoSumTest {
@@ -14,12 +12,13 @@ class TwoSumTest {
         val target = 9
         val twoSum = TwoSum()
         // when
-        val result = twoSum.twoSum(nums, target)
+        val firstResult = twoSum.twoSumHashMap(nums, target)
+        val second = twoSum.twoSumBruteForce(nums, target)
         // then
-        Assertions.assertEquals(result, intArrayOf(0, 1))
+        Assertions.assertTrue(firstResult.contentEquals(intArrayOf(0, 1)) || firstResult.contentEquals(intArrayOf(1, 0)))
+        Assertions.assertTrue(second.contentEquals(intArrayOf(0, 1)) || second.contentEquals(intArrayOf(1, 0)))
     }
 
-    @Disabled
     @Test
     fun should_return_second_and_third_indices_from_provided_array() {
         // given
@@ -27,12 +26,13 @@ class TwoSumTest {
         val target = 6
         val twoSum = TwoSum()
         // when
-        val result = twoSum.twoSum(nums, target);
+        val firstResult = twoSum.twoSumHashMap(nums, target)
+        val secondResult = twoSum.twoSumBruteForce(nums, target)
         // then
-        Assertions.assertEquals(result, intArrayOf(1, 2))
+        Assertions.assertTrue(firstResult.contentEquals(intArrayOf(1, 2)) || firstResult.contentEquals(intArrayOf(2, 1)))
+        Assertions.assertTrue(secondResult.contentEquals(intArrayOf(1, 2)) || secondResult.contentEquals(intArrayOf(2, 1)))
     }
 
-    @Disabled
     @Test
     fun should_return_first_and_second_indices_from_provided_two_elements_array() {
         // given
@@ -40,8 +40,10 @@ class TwoSumTest {
         val target = 6
         val twoSum = TwoSum()
         // when
-        val result = twoSum.twoSum(nums, target)
+        val firstResult = twoSum.twoSumHashMap(nums, target)
+        val secondResult = twoSum.twoSumBruteForce(nums, target)
         // then
-        Assertions.assertEquals(result, intArrayOf(0, 1))
+        Assertions.assertTrue(firstResult.contentEquals(intArrayOf(0, 1)) || firstResult.contentEquals(intArrayOf(1, 0)))
+        Assertions.assertTrue(secondResult.contentEquals(intArrayOf(0, 1)) || secondResult.contentEquals(intArrayOf(1, 0)))
     }
 }

@@ -25,8 +25,24 @@ import kotlinsolutions.LeetCodeTask
 
 class TwoSum : LeetCodeTask(1, "Two Sum") {
 
-    fun twoSum(nums: IntArray, target: Int): IntArray {
-        return intArrayOf(0, 1)
+    fun twoSumHashMap(nums: IntArray, target: Int): IntArray {
+        val valuesMap: HashMap<Int, Int> = HashMap()
+        for (i in nums.indices) {
+            val difference = target - nums[i]
+            if (valuesMap.containsKey(difference)) {
+                return intArrayOf(valuesMap.getValue(difference), i)
+            }
+            valuesMap[nums[i]] = i
+        }
+        return intArrayOf()
     }
 
+    fun twoSumBruteForce(nums: IntArray, target: Int): IntArray {
+        for (i in 0 until nums.size - 1) {
+            for (j in i + 1 until nums.size) {
+                println("i: $i, j: $j")
+                if (target == (nums[i] + nums[j])) return intArrayOf(i, j)}
+        }
+        return intArrayOf()
+    }
 }
