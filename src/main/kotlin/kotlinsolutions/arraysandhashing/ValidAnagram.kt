@@ -1,6 +1,6 @@
 package kotlinsolutions.arraysandhashing
 
-import javasolutions.LeetCodeTask
+import kotlinsolutions.LeetCodeTask
 import kotlin.collections.HashMap
 
 /**
