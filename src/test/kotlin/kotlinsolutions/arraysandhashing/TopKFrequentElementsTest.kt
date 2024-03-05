@@ -12,9 +12,11 @@ class TopKFrequentElementsTest {
         val k = 2;
         val topKFrequentElements = TopKFrequentElements()
         // when
-        val result = topKFrequentElements.topKFrequent(nums, k)
+        val firstResult = topKFrequentElements.topKFrequent(nums, k)
+        val secondResult = topKFrequentElements.topKFrequentOptimal(nums, k)
         // then
-        assertArrayEquals(result, intArrayOf(2, 1))
+        assertArrayEquals(firstResult, intArrayOf(2, 1))
+        assertArrayEquals(secondResult, intArrayOf(1, 2))
     }
 
     @Test
@@ -24,9 +26,38 @@ class TopKFrequentElementsTest {
         val k = 1
         val topKFrequentElements = TopKFrequentElements()
         // when
-        val result = topKFrequentElements.topKFrequent(nums, k)
+        val firstResult = topKFrequentElements.topKFrequent(nums, k)
+        val secondResult = topKFrequentElements.topKFrequentOptimal(nums, k)
         // then
-        assertArrayEquals(result, intArrayOf(1))
+        assertArrayEquals(firstResult, intArrayOf(1))
+        assertArrayEquals(secondResult, intArrayOf(1))
     }
 
+    @Test
+    fun should_return_array_with_one_negative_value() {
+        // given
+        val nums = intArrayOf(-1, -1)
+        val k = 1
+        val topKFrequentElements = TopKFrequentElements()
+        // when
+        val firstResult = topKFrequentElements.topKFrequent(nums, k)
+        val secondResult = topKFrequentElements.topKFrequentOptimal(nums, k)
+        // then
+        assertArrayEquals(firstResult, intArrayOf(-1))
+        assertArrayEquals(secondResult, intArrayOf(-1))
+    }
+
+    @Test
+    fun should_return_array_with_two_values() {
+        // given
+        val nums = intArrayOf(4,1,-1,2,-1,2,3)
+        val k = 2
+        val topKFrequentElements = TopKFrequentElements()
+        // when
+        val firstResult = topKFrequentElements.topKFrequent(nums, k)
+        val secondResult = topKFrequentElements.topKFrequentOptimal(nums, k)
+        // then
+        assertArrayEquals(firstResult, intArrayOf(-1, 2))
+        assertArrayEquals(secondResult, intArrayOf(-1, 2))
+    }
 }
