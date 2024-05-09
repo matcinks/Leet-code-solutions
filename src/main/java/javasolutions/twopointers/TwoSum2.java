@@ -2,6 +2,8 @@ package javasolutions.twopointers;
 
 import javasolutions.LeetCodeTask;
 
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  *      Given a 1-indexed array of integers numbers that is already sorted in non-decreasing order, find two numbers
@@ -35,8 +37,40 @@ public class TwoSum2 extends LeetCodeTask {
         super(167, "Two Sum II - Input Array Is Sorted");
     }
 
-    public int[] twoSum(int[] numbers, int target) {
+    public int[] twoSumBruteForce(int[] numbers, int target) {
+        for (int i = 0; i < numbers.length; i++) {
+            for (int j = i + 1; j < numbers.length; j++) {
+                if (numbers[i] + numbers[j] == target) {
+                    return new int[]{i + 1, j + 1};
+                }
+            }
+        }
+        return new int[0];
+    }
 
+    public int[] twoSumHashMap(int[] numbers, int target) {
+        Map<Integer, Integer> store = new HashMap<>();
+        for (int i = 0; i < numbers.length; i++) {
+            if (store.containsKey(target - numbers[i])) {
+                return new int[]{store.get(target - numbers[i]), i + 1};
+            }
+            store.put(numbers[i], i + 1);
+        }
+        return new int[0];
+    }
+
+    public int[] twoSumTwoPointers(int[] numbers, int target) {
+        int l = 0;
+        int r = numbers.length - 1;
+        while (l < r) {
+            if (numbers[l] + numbers[r] > target) {
+                r--;
+            } else if(numbers[l] + numbers[r] < target) {
+                l++;
+            } else {
+                return new int[]{l + 1, r + 1};
+            }
+        }
         return new int[0];
     }
 }
