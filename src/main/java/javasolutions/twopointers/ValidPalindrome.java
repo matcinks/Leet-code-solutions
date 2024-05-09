@@ -33,7 +33,45 @@ public class ValidPalindrome extends LeetCodeTask {
         super(125, "Valid Palindrome");
     }
 
-    public boolean isPalindrome(String s) {
-        return false;
+    public boolean isPalindromeUsingRegexAndReverseMethod(String s) {
+        String actual = s.replaceAll("[^A-Za-z0-9]", "").toLowerCase();
+        String reversed = new StringBuilder(actual).reverse().toString();
+        return actual.equals(reversed);
+    }
+
+    public boolean isPalindromeUsingTwoPointers(String s) {
+        int l = 0;
+        int r = s.length() - 1;
+
+        while (l < r) {
+            while (l < r && !Character.isLetterOrDigit(s.charAt(l))) {
+                l++;
+            }
+            while (r > l && !Character.isLetterOrDigit(s.charAt(r))) {
+                r--;
+            }
+            if (l > r || (Character.toLowerCase(s.charAt(l))) != Character.toLowerCase(s.charAt(r))) {
+                return false;
+            } else {
+                l++;
+                r--;
+            }
+        }
+        return true;
+    }
+
+    public boolean isPalindromeUsingCombinationOfRegexAndTwoPointers(String s) {
+        String actual = s.replaceAll("[^A-Za-z0-9]", "").toLowerCase();
+        int l = 0;
+        int r = actual.length() - 1;
+        while (l < r) {
+            if (actual.charAt(l) != actual.charAt(r)) {
+                return false;
+            } else {
+                l++;
+                r--;
+            }
+        }
+        return true;
     }
 }

@@ -13,12 +13,12 @@ class ValidPalindromeTest {
     private final String secondPalindromePhrase = " ";
 
     @Test
-    void should_return_true_if_given_phrase_is_palindrome() {
+    void should_return_true_if_given_phrase_is_palindrome_using_regex_and_reverse_method() {
         // given
         ValidPalindrome validPalindrome = new ValidPalindrome();
         // when
-        boolean firstResult = validPalindrome.isPalindrome(firstPalindromePhrase);
-        boolean secondResult = validPalindrome.isPalindrome(secondPalindromePhrase);
+        boolean firstResult = validPalindrome.isPalindromeUsingRegexAndReverseMethod(firstPalindromePhrase);
+        boolean secondResult = validPalindrome.isPalindromeUsingRegexAndReverseMethod(secondPalindromePhrase);
         // then
         assertAll(
                 () -> assertThat(firstResult).isTrue(),
@@ -27,11 +27,59 @@ class ValidPalindromeTest {
     }
 
     @Test
-    void should_return_false_if_given_phrase_is_not_palindrome() {
+    void should_return_false_if_given_phrase_is_not_palindrome_using_regex_and_reverse_method() {
         // given
         ValidPalindrome validPalindrome = new ValidPalindrome();
         // when
-        boolean result = validPalindrome.isPalindrome(noPalindromePhrase);
+        boolean result = validPalindrome.isPalindromeUsingRegexAndReverseMethod(noPalindromePhrase);
+        // then
+        assertFalse(result);
+    }
+
+    @Test
+    void should_return_true_if_given_phrase_is_palindrome_using_two_pointers() {
+        // given
+        ValidPalindrome validPalindrome = new ValidPalindrome();
+        // when
+        boolean firstResult = validPalindrome.isPalindromeUsingTwoPointers(firstPalindromePhrase);
+        boolean secondResult = validPalindrome.isPalindromeUsingTwoPointers(secondPalindromePhrase);
+        // then
+        assertAll(
+                () -> assertThat(firstResult).isTrue(),
+                () -> assertThat(secondResult).isTrue()
+        );
+    }
+
+    @Test
+    void should_return_false_if_given_phrase_is_not_palindrome_using_two_pointers() {
+        // given
+        ValidPalindrome validPalindrome = new ValidPalindrome();
+        // when
+        boolean result = validPalindrome.isPalindromeUsingTwoPointers(noPalindromePhrase);
+        // then
+        assertFalse(result);
+    }
+
+    @Test
+    void should_return_true_if_given_phrase_is_palindrome_using_combination_of_regex_and_two_pointers() {
+        // given
+        ValidPalindrome validPalindrome = new ValidPalindrome();
+        // when
+        boolean firstResult = validPalindrome.isPalindromeUsingCombinationOfRegexAndTwoPointers(firstPalindromePhrase);
+        boolean secondResult = validPalindrome.isPalindromeUsingCombinationOfRegexAndTwoPointers(secondPalindromePhrase);
+        // then
+        assertAll(
+                () -> assertThat(firstResult).isTrue(),
+                () -> assertThat(secondResult).isTrue()
+        );
+    }
+
+    @Test
+    void should_return_false_if_given_phrase_is_not_palindrome_using_combination_of_regex_and_two_pointers() {
+        // given
+        ValidPalindrome validPalindrome = new ValidPalindrome();
+        // when
+        boolean result = validPalindrome.isPalindromeUsingCombinationOfRegexAndTwoPointers(noPalindromePhrase);
         // then
         assertFalse(result);
     }
